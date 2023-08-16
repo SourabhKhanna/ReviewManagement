@@ -1,5 +1,6 @@
 package com.cg.destination.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,14 @@ public class DestinationServiceImpl implements DestinationService {
 	@Override
 	public List<Review> searchReviewByDestination(String city) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Destination> destinations=destinationRepository.findAll();
+		List<Destination> filtered= destinations.stream().filter(p->p.getCity().equals(city)).collect(Collectors.toList());
+		List<Integer> reviews=filtered.stream().map(p->p.getReviews()).collect(Collectors.toList());
+		List<Review> result=new ArrayList();
+		for(int id:reviews) {
+			result.add(feign.getById(id));
+		}
+		return result;
 	}
 
 	@Override
