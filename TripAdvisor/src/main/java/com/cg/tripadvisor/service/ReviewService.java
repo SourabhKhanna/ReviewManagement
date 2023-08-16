@@ -5,5 +5,6 @@ import com.cg.tripadvisor.dto.Review;
 public interface ReviewService {
 	
 	public Review save(Review review);
+	public Review getById(int id);
 
 }

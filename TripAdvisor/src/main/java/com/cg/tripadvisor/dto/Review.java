@@ -15,6 +15,4 @@ public class Review {
 	private String description;
 	@OneToOne
 	private Reviewer reviewer;
-	
-
 }

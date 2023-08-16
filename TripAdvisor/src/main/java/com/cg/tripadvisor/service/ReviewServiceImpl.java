@@ -15,5 +15,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public Review save(Review review) {
 		return repository.save(review);
 	}
+	@Override
+	public Review getById(int id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();
+	}
 
 }
